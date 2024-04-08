@@ -8,7 +8,7 @@
 #'@param freq est la frequence des frames utilisés (elle doit etre supperieur a 40)
 #'@return un fichier RESULT, est une sauvegarde dans user document
 #'@export
-#'
+
 DeepS_find_laser <- function(MP4_file,para,freq) {
 
   if (!requireNamespace("tictoc", quietly = TRUE)) {

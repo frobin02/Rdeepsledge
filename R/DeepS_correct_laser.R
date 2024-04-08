@@ -7,14 +7,7 @@
 #'@return un fichier RESULT, est une sauvegarde dans user document
 #'@export
 
-# RESULT <-readRDS("MPO_REFUGE_source.R")
 
-# [2] "laser_position_Plume2022_P4ST12_GOPR_2022-07-15.txt"
-
-# RESULT <- file.choose()
-
-#'
-#'
 DeepS_correct_laser<-function(RESULT){
   library(ggplot2)
   library(raster)
@@ -107,5 +100,12 @@ LASER$GRAPH<-vieww
 # chemin <- system.file("MPO_REFUGE_source.R", package = "Rdeepsledge")
 #
 #
+# RESULT <-readRDS("MPO_REFUGE_source.R")
 
+# [2] "laser_position_Plume2022_P4ST12_GOPR_2022-07-15.txt"
+
+# RESULT <- file.choose()
+
+#'
+#'
 
