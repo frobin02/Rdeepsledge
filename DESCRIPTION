@@ -1,0 +1,24 @@
+Package: Rdeepsledge
+Title: Deep sea slegde toolbox
+Version: 0.0.0.9000
+Authors@R: 
+    person("Frédéric", "Robin", , "forbin02@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "https://orcid.org/0000-0003-0232-1142"))
+Description: The RDeepSledge package is a toolbox for deep-sea surveys using an epibenthic sledge. The toolbox includes utilities for the position of the sledge and the detection of ( green twin) lasers  
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports:
+  dplyr,
+  ggplot2,
+  raster,
+  stringi,
+  tictoc,
+  sp,
+  sf,
+  foreach,
+  doParallel,
+  terra,
+  ggpubr,
+  av
