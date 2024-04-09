@@ -1,10 +1,10 @@
 #PACKAGE "Rdeepsledge"
 
 
-#"Fonction de correction de la detection laser"
-#' Cette fonction detect les doubles lasers verts sur une luge benthique tracté"
-#'@param RESULT est le jeu de données types produit par DeepS_find_laser.R
-#'@return un fichier RESULT, est une sauvegarde dans user document
+#"Correction function of laser detection"
+#' This function detects double green lasers on a towed benthic sledge"
+#'@param RESULT Is the dataset type produced by DeepS_find_laser.R.
+#'@return a RESULT file is a backup in the user's document
 #'@export
 
 
@@ -85,25 +85,7 @@ vieww <- ggarrange(allp,first,ncol=1)
 
 LASER$DATA<-RESULT
 LASER$GRAPH<-vieww
-
+return(LASER)
 }
 
-#
-# NEWRES<-RESCORR(RESULT)
-#
-# devtools::create("Rdeepsledge")
-# export("Rdeepsledge")
-# use_git()
-#
-# # Pousser le package sur GitHub
-# use_github()
-#
-# chemin <- system.file("MPO_REFUGE_source.R", package = "Rdeepsledge")
-#
-#
-# RESULT <-readRDS("MPO_REFUGE_source.R")
-# [2] "laser_position_Plume2022_P4ST12_GOPR_2022-07-15.txt"
-# RESULT <- file.choose()
-#'
-#'
 

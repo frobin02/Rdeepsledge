@@ -2,18 +2,16 @@
 
 
 #"Fonction de detection laser"
-#' Cette fonction detect les doubles lasers verts sur une luge benthique tracté"
-#'@param MP4_file est la vide assigné MP4_file <- file.choose
-#'@param para est une option de parallelisation  pour optiniser le temps de calcul
-#'@param freq est la frequence des frames utilisés elle doit etre supperieur a 40
-#'@return un fichier RESULT, est une sauvegarde dans user document
+
+
+#' This function detects double green lasers on a towed benthic sledge
+#'@param MP4_file is the video file assigned MP4_file <- file.choose() for example
+#'@param para is a parallelization option to optimize the computing time FALSE for this version
+#'@param freq is the frame frequency used; it must be greater than 40. A shorter number increases the computing time.
+#'@return a RESULT file, saved also in user/documents directory as laser_position_$yourvideonames$.txt
 #'@export
 
 DeepS_find_laser <- function(MP4_file,para,freq) {
-
-  if (!requireNamespace("tictoc", quietly = TRUE)) {
-    install.packages("tictoc")
-  }
 
   library(raster)
   library(sp)
@@ -23,7 +21,8 @@ DeepS_find_laser <- function(MP4_file,para,freq) {
   library(terra)
   library(stringi)
   library(tictoc)
-
+  library(dplyr)
+  
   # Créer le répertoire temporaire
   temp_dir <- tempfile()
   dir.create(temp_dir)
@@ -118,7 +117,6 @@ gc(); stopCluster(cl)
  # values(results_df)<-rr
  # # x11();plot(b)
  rr[rr==0]<-NA
-
 #  rr[is.na(rr)]<-0
 #  # rr[rr>0]<-1
 # is.na(rr[rr==0])
@@ -146,7 +144,6 @@ gc(); stopCluster(cl)
    merged_polygons <- st_as_sf(glcmbuf)
 
    df_union_cast <- st_cast(merged_polygons, "POLYGON")
-   library(dplyr)
    df_union_cast <- df_union_cast %>%     mutate(surface = st_area(.))
 
    centros <- df_union_cast %>%  st_centroid() %>% st_coordinates()
@@ -189,7 +186,11 @@ gc(); stopCluster(cl)
   # Nettoyage
   setwd(temp_dir)
   unlink(temp_dir, recursive = TRUE)
-}
+
+  return(RESULT)
+  
+  }
+#/////////////////////////////////////////////////////////////////////////////////
 
 
 
