@@ -2,3 +2,4 @@
 
 export(DeepS_correct_laser)
 export(DeepS_find_laser)
+export(open_help_vignette)

@@ -2,20 +2,20 @@
 % Please edit documentation in R/DeepS_find_laser.R
 \name{DeepS_find_laser}
 \alias{DeepS_find_laser}
-\title{Cette fonction detect les doubles lasers verts sur une luge benthique tracté"}
+\title{This function detects double green lasers on a towed benthic sledge}
 \usage{
 DeepS_find_laser(MP4_file, para, freq)
 }
 \arguments{
-\item{MP4_file}{est la vide assigné MP4_file <- file.choose()}
+\item{MP4_file}{is the video file assigned MP4_file <- file.choose() for example}
 
-\item{para}{est une option de parallelisation  pour optiniser le temps de calcul}
+\item{para}{is a parallelization option to optimize the computing time FALSE for this version}
 
-\item{freq}{est la frequence des frames utilisés (elle doit etre supperieur a 40)}
+\item{freq}{is the frame frequency used; it must be greater than 40. A shorter number increases the computing time.}
 }
 \value{
-un fichier RESULT, est une sauvegarde dans user document
+a RESULT file, saved also in user/documents directory as laser_position_$yourvideonames$.txt
 }
 \description{
-Cette fonction detect les doubles lasers verts sur une luge benthique tracté"
+This function detects double green lasers on a towed benthic sledge
 }

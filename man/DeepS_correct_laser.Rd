@@ -2,16 +2,16 @@
 % Please edit documentation in R/DeepS_correct_laser.R
 \name{DeepS_correct_laser}
 \alias{DeepS_correct_laser}
-\title{Cette fonction detect les doubles lasers verts sur une luge benthique tracté"}
+\title{This function detects double green lasers on a towed benthic sledge"}
 \usage{
 DeepS_correct_laser(RESULT)
 }
 \arguments{
-\item{RESULT}{est le jeu de données types produit par DeepS_find_laser.R}
+\item{RESULT}{Is the dataset type produced by DeepS_find_laser.R.}
 }
 \value{
-un fichier RESULT, est une sauvegarde dans user document
+a RESULT file is a backup in the user's document
 }
 \description{
-Cette fonction detect les doubles lasers verts sur une luge benthique tracté"
+This function detects double green lasers on a towed benthic sledge"
 }
