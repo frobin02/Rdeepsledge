@@ -87,6 +87,7 @@ LASER$DATA<-RESULT
 LASER$GRAPH<-vieww
 
 }
+
 #
 # NEWRES<-RESCORR(RESULT)
 #
@@ -101,11 +102,8 @@ LASER$GRAPH<-vieww
 #
 #
 # RESULT <-readRDS("MPO_REFUGE_source.R")
-
 # [2] "laser_position_Plume2022_P4ST12_GOPR_2022-07-15.txt"
-
 # RESULT <- file.choose()
-
 #'
 #'
 
