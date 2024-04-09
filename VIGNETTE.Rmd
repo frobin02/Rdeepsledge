@@ -8,8 +8,14 @@ vignette: >
   %\VignetteIndexEntry{Introduction à Rdeepsledge}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}              
-                 
+                  
 ---
+```{r Dépendances, include=FALSE}
+
+#' Dépendances du package
+#' @useDynLib Rdeepsledge
+
+```
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, fig.align="center",warning = FALSE,message = FALSE,error = TRUE)
@@ -18,6 +24,7 @@ library(ggplot2)
 library(kableExtra)
 library(knitr)
 exemple <- load(file_path)
+# exemple <- load(MPO_REFUGE_source.Rdata)
 ```
 
 # Introduction
