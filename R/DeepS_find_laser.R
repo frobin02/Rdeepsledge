@@ -3,9 +3,9 @@
 
 #"Fonction de detection laser"
 #' Cette fonction detect les doubles lasers verts sur une luge benthique tracté"
-#'@param MP4_file est la vide assigné MP4_file <- file.choose()
+#'@param MP4_file est la vide assigné MP4_file <- file.choose
 #'@param para est une option de parallelisation  pour optiniser le temps de calcul
-#'@param freq est la frequence des frames utilisés (elle doit etre supperieur a 40)
+#'@param freq est la frequence des frames utilisés elle doit etre supperieur a 40
 #'@return un fichier RESULT, est une sauvegarde dans user document
 #'@export
 
