@@ -1,15 +1,13 @@
 ---
-title: "package Rdeepsledge"
-author: "FROBIN02"
-output:
-  html_document: default
-  pdf_document: default
+title: "Package(Rdeepsledge)"
+author: "Frobin02"
+output: 
+  rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Introduction à Rdeepsledge}
-  %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}              
-                  
----
+  %\VignetteIndexEntry{Ma Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+---               
+
 ```{r Dépendances, include=FALSE}
 
 #' Dépendances du package
