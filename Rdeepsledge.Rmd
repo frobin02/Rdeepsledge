@@ -1,10 +1,10 @@
 ---
-title: "Package(Rdeepsledge)"
+title: "package(Rdeepsledge)"
 author: "Frobin02"
 output: 
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Ma Vignette}
+  %\VignetteIndexEntry{Rdeepsledge}
   %\VignetteEngine{knitr::rmarkdown}
 ---               
 

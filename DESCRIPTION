@@ -22,3 +22,7 @@ Imports:
   terra,
   ggpubr,
   av
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

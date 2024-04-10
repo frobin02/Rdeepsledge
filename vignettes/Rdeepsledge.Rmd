@@ -1,0 +1,118 @@
+---
+title: "Rdeepsledge"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Rdeepsledge}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r Dépendances, include=FALSE}
+
+#' Dépendances du package
+#' @useDynLib Rdeepsledge
+
+```
+
+```{r setup, include=FALSE}
+library(Rdeepsledge)
+
+knitr::opts_chunk$set(echo = TRUE, fig.align="center",warning = FALSE,message = FALSE,error = TRUE)
+file_path <- system.file("MPO_REFUGE_source.RData", package = "Rdeepsledge")
+library(ggplot2)
+library(kableExtra)
+library(knitr)
+load(file_path)
+ exemple <- dat
+
+```
+
+
+
+# Introduction
+
+The RDeepSledge package is a toolbox for underwater surveys using a benthic sledge.
+Sledge location (longitude and latitude) of the benthic sledge can be estimate from boat position with **DeepS_location()**. Twins green laser positions can be extract from movie using **DeepS_find_laser()** and correction of laser positions can be done with **DeepS_correct_laser()**. 
+
+
+# Installation
+
+To install MonPackage, use **devtools::install_github("FROBIN02/Rdeepsledge")**.
+
+## Estimating Sledge location from boat position
+
+
+
+*in process*
+
+
+
+## Extraction of laser point locations
+
+Note: the AV package must be installed separately.
+
+
+```{r find laser, eval=FALSE}
+
+library(Rdeepsledge)
+
+MP4_file <- file.choose ()
+
+RESULT<- DeepS_find_laser(MP4_file,FALSE,120)
+
+```
+
+Here, *MP4_file* is your video file, *FALSE* is the parallelization option (not stable for this version), and the number *120* corresponds to the number of frames between each estimation. This value cannot be less than 40.
+
+**WARNING** This function may run for several days. The conversion of the video into frames can take up space, but the temporary folder is deleted at the end of the execution.   
+
+## Example for correcting laser position files
+
+```{r exemple laser, eval=FALSE,message=FALSE}
+
+library(Rdeepsledge)
+
+RESULT <- read.table("laser_position#yourvideo#.txt") # in "USER/document"
+
+```
+
+The file extracted from the video is stored under the name RESULT and a backup is made in USER/document in the form laser_position*VOTREVIDEO*.txt.
+
+For the example, the data MPO_REFURE_source.R replaces the data file.
+
+```{r corr laser data,eval=TRUE,warning=FALSE,message=FALSE}
+library(Rdeepsledge)
+
+mylaser <- DeepS_correct_laser(exemple)
+
+```
+
+exemple de données
+
+
+```{r cor res, echo=FALSE,eval=TRUE,message=FALSE,results='asis'}
+library(knitr)
+tabsyn <- head(mylaser$DATA)
+   tabsyn %>%
+  kbl(caption = "Table 1:tableau de données avec balise") %>%
+  kable_classic(full_width = T, html_font = "Cambria")
+```
+
+The details of the fields are not yet available for this version...
+
+Next, a figure extracted from the corrected data. 
+
+```{r corr laser graph,echo=FALSE, warning=FALSE, message=FALSE,fig.width=8, fig.height=8, results='asis'}
+
+mylaser$GRAPH
+
+```
+
+
