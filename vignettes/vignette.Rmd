@@ -14,8 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r Dépendances, include=FALSE}
 
+```{r Dépendances, include=FALSE}
+#' @importFrom Rdeepsledge DeepS_location DeepS_find_laser DeepS_correct_laser
 #' Dépendances du package
 #' @useDynLib Rdeepsledge
 
@@ -25,12 +26,12 @@ knitr::opts_chunk$set(
 library(Rdeepsledge)
 
 knitr::opts_chunk$set(echo = TRUE, fig.align="center",warning = FALSE,message = FALSE,error = TRUE)
-file_path <- system.file("MPO_REFUGE_source.RData", package = "Rdeepsledge")
+file_path <- system.file("extdata", "MPO_REFUGE_source.RData", package = "Rdeepsledge")
 library(ggplot2)
 library(kableExtra)
 library(knitr)
 load(file_path)
- exemple <- dat
+loclasers <- dat
 
 ```
 
@@ -44,7 +45,7 @@ Sledge location (longitude and latitude) of the benthic sledge can be estimate f
 
 # Installation
 
-To install MonPackage, use **devtools::install_github("FROBIN02/Rdeepsledge")**.
+To install *RDeepSledge* Package, use **devtools::install_github("FROBIN02/Rdeepsledge")**.
 
 ## Estimating Sledge location from boat position
 
@@ -59,19 +60,20 @@ To install MonPackage, use **devtools::install_github("FROBIN02/Rdeepsledge")**.
 Note: the AV package must be installed separately.
 
 
-```{r find laser, eval=FALSE}
+```{r find laser,  eval = FALSE, echo = TRUE}
 
 library(Rdeepsledge)
 
 MP4_file <- file.choose ()
 
-RESULT<- DeepS_find_laser(MP4_file,FALSE,120)
+loclasers<- DeepS_find_laser(MP4_file,FALSE,120)
 
 ```
 
-Here, *MP4_file* is your video file, *FALSE* is the parallelization option (not stable for this version), and the number *120* corresponds to the number of frames between each estimation. This value cannot be less than 40.
+Here, *MP4_file* is your video file, *FALSE* is the parallelization option (not stable for this version), and the number *120* corresponds to the number of frames between each estimation.
 
-**WARNING** This function may run for several days. The conversion of the video into frames can take up space, but the temporary folder is deleted at the end of the execution.   
+**WARNING** This function may run for several hours,days. The conversion of the video into frames can take up space, but the temporary folder is deleted at the end of the execution.
+
 
 ## Example for correcting laser position files
 
@@ -79,18 +81,18 @@ Here, *MP4_file* is your video file, *FALSE* is the parallelization option (not 
 
 library(Rdeepsledge)
 
-RESULT <- read.table("laser_position#yourvideo#.txt") # in "USER/document"
+loclasers <- read.table("laser_position#yourvideo#.txt") # in "USER/document"
 
 ```
 
-The file extracted from the video is stored under the name RESULT and a backup is made in USER/document in the form laser_position*VOTREVIDEO*.txt.
+The file extracted from the video is stored under the name "RESULT" and a backup is made in USER/document in the form laser_position*namesofyourvideo*.txt.
 
 For the example, the data MPO_REFURE_source.R replaces the data file.
 
 ```{r corr laser data,eval=TRUE,warning=FALSE,message=FALSE}
 library(Rdeepsledge)
 
-mylaser <- DeepS_correct_laser(exemple)
+mylaser_coor <- DeepS_correct_laser(loclasers)
 
 ```
 
@@ -99,7 +101,7 @@ exemple de données
 
 ```{r cor res, echo=FALSE,eval=TRUE,message=FALSE,results='asis'}
 library(knitr)
-tabsyn <- head(mylaser$DATA)
+tabsyn <- head(mylaser_coor$DATA)
    tabsyn %>%
   kbl(caption = "Table 1:tableau de données avec balise") %>%
   kable_classic(full_width = T, html_font = "Cambria")
@@ -111,7 +113,7 @@ Next, a figure extracted from the corrected data.
 
 ```{r corr laser graph,echo=FALSE, warning=FALSE, message=FALSE,fig.width=8, fig.height=8, results='asis'}
 
-mylaser$GRAPH
+mylaser_coor$GRAPH
 
 ```
 

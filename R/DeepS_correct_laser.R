@@ -3,8 +3,8 @@
 
 #"Correction function of laser detection"
 #' This function detects double green lasers on a towed benthic sledge"
-#'@param RESULT Is the dataset type produced by DeepS_find_laser.R.
-#'@return a RESULT file is a backup in the user's document
+#'@param RESULT Is the dataset type produced by DeepS_find_laser ()"
+#'@return   file  is a backup in the user's document
 #'@export
 
 
@@ -66,20 +66,20 @@ r[r>=1] <-1
 buffered_raster <- buffer(r, width=1, maskNA=FALSE)
 polygons <- rasterToPolygons(buffered_raster, dissolve=TRUE)
 sel<- extract(polygons,points_df[,c(1,2)])
-RESULT$layer<- sel[2]
-RESULT$layer<-ifelse(is.na(RESULT$layer) ,"red","green")
+RESULT$Validity<- sel[2]
+RESULT$Validity<-ifelse(is.na(RESULT$Validity) ,"red","green")
 
 
-B<- ggplot(RESULT,aes(y=Nframe,x=X,color=layer))+
+B<- ggplot(RESULT,aes(y=Nframe,x=X,color=Validity))+
   geom_point()+geom_vline(xintercept = c(maxX,mid,minX))
-A<- ggplot(RESULT,aes(y=Nframe,x=Y,color=layer))+
+A<- ggplot(RESULT,aes(y=Nframe,x=Y,color=Validity))+
   geom_point()
 first<-  ggarrange(A,B,ncol=2)
 
 namevideo <-gsub("\\\\","£",RESULT$origin [1])
 namevideo <-as.vector(stri_split_fixed(namevideo,"£") )
 namevideo<-namevideo[[1]][length(as.factor(namevideo[[1]]))]
-allp<-  ggplot(RESULT,aes(x=X,y=Y,color=layer))+geom_point()+ggtitle(namevideo)
+allp<-  ggplot(RESULT,aes(x=X,y=Y,color=Validity))+geom_point()+ggtitle(namevideo)
 
 vieww <- ggarrange(allp,first,ncol=1)
 

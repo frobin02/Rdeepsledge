@@ -7,10 +7,10 @@
 DeepS_correct_laser(RESULT)
 }
 \arguments{
-\item{RESULT}{Is the dataset type produced by DeepS_find_laser.R.}
+\item{RESULT}{Is the dataset type produced by DeepS_find_laser ()"}
 }
 \value{
-a RESULT file is a backup in the user's document
+file  is a backup in the user's document
 }
 \description{
 This function detects double green lasers on a towed benthic sledge"

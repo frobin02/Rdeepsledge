@@ -11,10 +11,10 @@ DeepS_find_laser(MP4_file, para, freq)
 
 \item{para}{is a parallelization option to optimize the computing time FALSE for this version}
 
-\item{freq}{is the frame frequency used; it must be greater than 40. A shorter number increases the computing time.}
+\item{freq}{is the frame frequency used. A shorter number increases the computing time.}
 }
 \value{
-a RESULT file, saved also in user/documents directory as laser_position_$yourvideonames$.txt
+a result is saved also in user/documents directory as laser_position_$yourvideonames$.txt at each iteration.
 }
 \description{
 This function detects double green lasers on a towed benthic sledge

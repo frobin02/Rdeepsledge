@@ -7,12 +7,12 @@
 #' This function detects double green lasers on a towed benthic sledge
 #'@param MP4_file is the video file assigned MP4_file <- file.choose() for example
 #'@param para is a parallelization option to optimize the computing time FALSE for this version
-#'@param freq is the frame frequency used; it must be greater than 40. A shorter number increases the computing time.
-#'@return a RESULT file, saved also in user/documents directory as laser_position_$yourvideonames$.txt
+#'@param freq is the frame frequency used. A shorter number increases the computing time.
+#'@return a result is saved also in user/documents directory as laser_position_$yourvideonames$.txt at each iteration.
 #'@export
 
 DeepS_find_laser <- function(MP4_file,para,freq) {
-
+  freq<-as.numeric(freq)
   library(raster)
   library(sp)
   library(sf)
@@ -23,6 +23,8 @@ DeepS_find_laser <- function(MP4_file,para,freq) {
   library(tictoc)
   library(dplyr)
   
+ if(para==TRUE){para<-TRUE}else{para<-FALSE} 
+freq<-as.numeric(freq)
   # Créer le répertoire temporaire
   temp_dir <- tempfile()
   dir.create(temp_dir)
@@ -54,10 +56,9 @@ DeepS_find_laser <- function(MP4_file,para,freq) {
   k=1
   raster_glcm<-function(ras){glcm::glcm(ras, window = c(7, 7),
                                         shift=list(c(0,1), c(1,1), c(1,0), c(1,-1)),
-                                        statistics = "contrast"
-  )}
+                                        statistics = "contrast" )}
   tic()
-  para = FALSE
+  para <- FALSE
   if (para==FALSE){
 
   raslist<-list()
@@ -110,7 +111,7 @@ gc(); stopCluster(cl)
   toc()
 
  results_df <- do.call(stack, results)
- plot(results_df)
+ # plot(results_df)
  cumul_res<-results_df[[1]]
  rr<-getValues(results_df)
  # rr<-ifelse(rr<=5,0,1)
@@ -128,7 +129,7 @@ gc(); stopCluster(cl)
  rr[is.na(rr)]<-0
  stop_to_next<-max(rr)==0
 
-
+# dev.off()
  regions_to_polygons <- function(region_raster) {
    polygons <- rasterToPolygons(region_raster, dissolve = TRUE)
    return(polygons)
