@@ -58,9 +58,8 @@ freq<-as.numeric(freq)
                                         shift=list(c(0,1), c(1,1), c(1,0), c(1,-1)),
                                         statistics = "contrast" )}
   tic()
-  para <- FALSE
   if (para==FALSE){
-
+    cat("\n paral. off \n")
   raslist<-list()
   k=1
   for ( j in sample1) {
@@ -71,7 +70,7 @@ freq<-as.numeric(freq)
   results <- raslist}
   if (para==TRUE){
 
-    cat("paral. on")
+    cat("\n paral. on \n")
   raslist<-list()
   k=1
   for ( j in sample1) {
@@ -98,13 +97,14 @@ freq<-as.numeric(freq)
  cl <-parallel::makeCluster(detectCores()-2)
  doParallel::registerDoParallel(cores = cl)
  results <- foreach(ras_file = raster_files) %dopar% {
+   gc()
    raster_glcm<-function(ras){glcm::glcm(ras, window = c(7, 7),
                                                 shift=list(c(0,1), c(1,1), c(1,0), c(1,-1)),
                                                 statistics = "contrast"
    )}
    process_raster(ras_file)
 
-
+   gc()
  }
 gc(); stopCluster(cl)
   }
