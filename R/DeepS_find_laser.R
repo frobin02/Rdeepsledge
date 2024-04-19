@@ -22,7 +22,7 @@ DeepS_find_laser <- function(MP4_file,para,freq) {
   library(stringi)
   library(tictoc)
   library(dplyr)
-  
+  # library(gputools)
  if(para==TRUE){para<-TRUE}else{para<-FALSE} 
 freq<-as.numeric(freq)
   # Créer le répertoire temporaire
@@ -82,8 +82,11 @@ freq<-as.numeric(freq)
 
 
  ## Fonction de traitement d'une image
-
- process_raster <- function(ras_file) {
+  raster_glcm<-function(ras){glcm::glcm(ras, window = c(7, 7),
+                                                shift=list(c(0,1), c(1,1), c(1,0), c(1,-1)),
+                                                statistics = "contrast"
+   )}
+  process_raster <- function(ras_file) {
    # Charger l'image
    ras1<-ras_file
    ras_contrast<-raster_glcm(ras1)
@@ -98,15 +101,12 @@ freq<-as.numeric(freq)
  doParallel::registerDoParallel(cores = cl)
  results <- foreach(ras_file = raster_files) %dopar% {
    gc()
-   raster_glcm<-function(ras){glcm::glcm(ras, window = c(7, 7),
-                                                shift=list(c(0,1), c(1,1), c(1,0), c(1,-1)),
-                                                statistics = "contrast"
-   )}
-   process_raster(ras_file)
+   result<-process_raster(ras_file)
+   result
 
-   gc()
  }
-gc(); stopCluster(cl)
+ gc()
+stopCluster(cl)
   }
   toc()
 

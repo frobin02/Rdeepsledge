@@ -1,6 +1,6 @@
 Package: Rdeepsledge
 Title: Deep sea slegde toolbox
-Version: 0.0.0.9000
+Version: 0.0.1.0000
 Authors@R: 
     person("Frédéric", "Robin", , "forbin02@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0003-0232-1142"))
