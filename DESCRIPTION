@@ -17,9 +17,11 @@ Imports:
   tictoc,
   sp,
   sf,
+  testthat,
   foreach,
   doParallel,
   terra,
+  kableExtra,
   ggpubr,
   av
 Suggests: 

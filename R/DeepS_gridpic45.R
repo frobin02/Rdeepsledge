@@ -11,6 +11,18 @@
 # mydir<-choose.dir()
 
 DeepS_gridpic45<-function(mydir){
+  
+  library(imager)
+  library(raster)
+  library(sf)
+  library(terra)
+  library(tidyr)
+  library(Hmisc)
+  library(magick)
+  library(utils)
+  library(ggplot2)
+  library(dplyr)
+  
   setwd(mydir)
   dir.create("GRID")
   output=paste(mydir,"/","GRID",sep="")

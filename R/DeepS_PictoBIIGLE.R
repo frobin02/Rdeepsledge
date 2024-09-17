@@ -13,6 +13,8 @@
 
 
 DeepS_PictoBIIGLE <- function(mydir) {
+  library(reshape2)
+  
   if (!is.null(input)) {
     setwd(input)
     pic_files <- list.files(pattern = ".png")

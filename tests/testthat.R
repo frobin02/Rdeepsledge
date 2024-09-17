@@ -9,4 +9,4 @@
 library(testthat)
 library(Rdeepsledge)
 
-test_check("Rdeepsledge")
+test_check("DeepS_PictoBIIGLE")

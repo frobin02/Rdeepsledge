@@ -13,6 +13,19 @@
 #sensibility <-10 
 
 DeepS_darckzone <- function(mydir,sensibility,plot){
+  library(imager)
+  library(raster)
+  library(sf)
+  library(terra)
+  library(tidyr)
+  library(Hmisc)
+  library(magick)
+  library(utils)
+  library(ggplot2)
+  library(dplyr)
+  
+  
+  
   datablack<-list(NULL)
   setwd(mydir)
   suppressWarnings({dir.create("DARKZONE")})
