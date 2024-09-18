@@ -1,5 +1,5 @@
 ---
-title: "package(Rdeepsledge) "
+title: "Package(Rdeepsledge) "
 output: rmarkdown::html_vignette
 
 vignette: >
@@ -75,7 +75,7 @@ loclasers<- DeepS_find_laser(MP4_file,FALSE,120)
 
 ```
 
-Here, *MP4_file* is your video file, *FALSE* is the parallelization option (not stable for this version), and the number *120* corresponds to the number of frames between each estimation.
+Here, *MP4_file* is your video file, *FALSE* is the parallelization option, and the number *120* corresponds to the number of frames between each estimation.
 
 **WARNING** This function may run for several hours,days. The conversion of the video into frames can take up space, but the temporary folder is deleted at the end of the execution.
 
@@ -103,14 +103,14 @@ mylaser_coor <- DeepS_correct_laser(loclasers)
 
 ```
 
-exemple de données form **MPO IML Pêches et Océans Canada**
+Example with the dataset form **MPO IML Pêches et Océans Canada**
 
 
 ```{r cor res, echo=FALSE,eval=TRUE,message=FALSE,results='asis'}
 library(knitr)
 tabsyn <- head(mylaser_coor$DATA)
    tabsyn %>%
-  kbl(caption = "Table 1:tableau de données avec balise") %>%
+  kbl(caption = "Table 1:summary of laser positions") %>%
   kable_classic(full_width = T, html_font = "Cambria")
 ```
 
@@ -124,10 +124,12 @@ mylaser_coor$GRAPH
 
 ```
 
-## Creating grid on picture with **DeepS_gridpic45()**
+*Fine-tuning methods are currently in progress.*
+
+## Create a 45-Knot Grid on Images With **DeepS_gridpic45()**
 
 
-Before importing to annotation software like BIIGLE, **DeepS_gridpic45()** helps by creating a grid with 45 knots on each image. This grid can assist in estimating sediment proportions. All images are saved in the **GRID** directory. 
+Before importing images to annotation software like [BIIGLE](https://biigle.de/), **DeepS_gridpic45()** helps by creating a grid with 45 knots on each image. This grid can assist in estimating sediment proportions. All images are saved in the **GRID** directory. 
 
 
 ```{r DeepS_gridpic45,eval=TRUE,warning=FALSE,message=FALSE}
@@ -140,18 +142,20 @@ DeepS_gridpic45(mydir)
 
 ```
 
-## Estimating Dark Zones on Images with **DeepS_darkzone()**
+## Estimating Dark Zones on Images With **DeepS_darkzone()**
 
 
 *in process*
 
 
-## Creating a Picture List for BIIGLE Import with **DeepS_PictoBIIGLE()**
+## Generate a List of Picture Names in a .txt File with **DeepS_PictoBIIGLE()**
 
 
-This function helps create a list of picture names in a **.txt** file from a directory of pictures.
+This function generates a **.txt** file containing a list of picture filenames from a specified directory. 
+It can be used to easily compile image file names for input into other applications, such as [BIIGLE](https://biigle.de/), or for organizational purposes.
 
 ```{r rDeepS_PictoBIIGLE,eval=TRUE,warning=FALSE,message=FALSE}
+
 library(Rdeepsledge)
 
  mydir <- "path/to/your/image/directory"

@@ -21,8 +21,8 @@
 DeepS_PictoBIIGLE <- function(mydir) {
   library(reshape2)
   
-  if (!is.null(input)) {
-    setwd(input)
+  if (!is.null(mydir)) {
+    setwd(mydir)
     pic_files <- list.files(pattern = ".png")
     l <- as.data.frame(t(pic_files))
     write.table(l, "list.filetoBIIGLE.txt", sep = ',', col.names = FALSE, row.names = FALSE, quote = FALSE)
