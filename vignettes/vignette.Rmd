@@ -1,5 +1,5 @@
 ---
-title: "Rdeepsledge"
+title: "package(Rdeepsledge) "
 output: rmarkdown::html_vignette
 
 vignette: >
@@ -17,8 +17,8 @@ knitr::opts_chunk$set(
 
 
 ```{r Dépendances, include=FALSE}
-#' @importFrom Rdeepsledge DeepS_location DeepS_find_laser DeepS_correct_laser
-#' Dépendances du package
+#' @importFrom Rdeepsledge DeepS_location DeepS_find_laser DeepS_correct_laser DeepS_darkzone DeepS_gridpic45 rDeepS_PictoBIIGLE
+#' Dependencies of the package
 #' @useDynLib Rdeepsledge
 
 ```
@@ -40,21 +40,27 @@ loclasers <- dat
 
 # Introduction
 
-The RDeepSledge package is a toolbox for underwater surveys using a benthic sledge.
-Sledge location (longitude and latitude) of the benthic sledge can be estimate from boat position with **DeepS_location()**. Twins green laser positions can be extract from movie using **DeepS_find_laser()** and correction of laser positions can be done with **DeepS_correct_laser()**. 
+The `Rdeepsledge` package is a toolbox designed for underwater surveys using a benthic sledge and image processing. The package includes functions for various tasks:
+
+- **`DeepS_location()`**: Estimates the sledge location (longitude and latitude) from the boat position.
+- **`DeepS_find_laser()`**: Extracts twin green laser positions from a video.
+- **`DeepS_correct_laser()`**: Corrects laser positions.
+- **`DeepS_gridpic45()`**: Adds a grid with 45 knots to images for sediment proportion estimation.
+- **`DeepS_darkzone()`**: Estimates dark zones in images to improve the accuracy of surface observations.
+- **`DeepS_PictoBIIGLE()`**: Imports lists of numerous pictures for BIIGLE.
 
 
 # Installation
 
 To install *RDeepSledge* Package, use **devtools::install_github("FROBIN02/Rdeepsledge")**.
 
-## Estimating Sledge location from boat position
+## Estimating Sledge Location from Boat Position
 
 
 *in process*
 
 
-## Extraction of laser point locations
+## Extraction of laser point locations with **DeepS_find_laser()**
 
 Note: the AV package must be installed separately.
 
@@ -74,7 +80,7 @@ Here, *MP4_file* is your video file, *FALSE* is the parallelization option (not 
 **WARNING** This function may run for several hours,days. The conversion of the video into frames can take up space, but the temporary folder is deleted at the end of the execution.
 
 
-## Example for correcting laser position files
+## Example for Correcting Laser Position Files with  **DeepS_correct_laser()**
 
 ```{r exemple laser, eval=FALSE,message=FALSE}
 
@@ -84,9 +90,11 @@ loclasers <- read.table("laser_position#yourvideo#.txt") # in "USER/document"
 
 ```
 
-The file extracted from the video is stored under the name "RESULT" and a backup is made in USER/document in the form laser_position*namesofyourvideo*.txt.
 
-For the example, the data MPO_REFURE_source.R replaces the data file.
+The file extracted from the video is saved as `"RESULT"`. Additionally, a backup of this file is stored in the `USER/Documents` directory with the name `laser_position_yourvideo.txt`.
+
+For demonstration purposes, the data file `MPO_REFUGE_source.RData` is used in place of the actual video data file.
+
 
 ```{r corr laser data,eval=TRUE,warning=FALSE,message=FALSE}
 library(Rdeepsledge)
@@ -95,7 +103,7 @@ mylaser_coor <- DeepS_correct_laser(loclasers)
 
 ```
 
-exemple de données
+exemple de données form **MPO IML Pêches et Océans Canada**
 
 
 ```{r cor res, echo=FALSE,eval=TRUE,message=FALSE,results='asis'}
@@ -106,13 +114,49 @@ tabsyn <- head(mylaser_coor$DATA)
   kable_classic(full_width = T, html_font = "Cambria")
 ```
 
-The details of the fields are not yet available for this version...
+*The details of the fields are not yet available for this version...*
 
 Next, a figure extracted from the corrected data. 
 
 ```{r corr laser graph,echo=FALSE, warning=FALSE, message=FALSE,fig.width=8, fig.height=8, results='asis'}
 
 mylaser_coor$GRAPH
+
+```
+
+## Creating grid on picture with **DeepS_gridpic45()**
+
+
+Before importing to annotation software like BIIGLE, **DeepS_gridpic45()** helps by creating a grid with 45 knots on each image. This grid can assist in estimating sediment proportions. All images are saved in the **GRID** directory. 
+
+
+```{r DeepS_gridpic45,eval=TRUE,warning=FALSE,message=FALSE}
+
+library(Rdeepsledge)
+
+mydir <- "path/to/your/image/directory"
+
+DeepS_gridpic45(mydir)
+
+```
+
+## Estimating Dark Zones on Images with **DeepS_darkzone()**
+
+
+*in process*
+
+
+## Creating a Picture List for BIIGLE Import with **DeepS_PictoBIIGLE()**
+
+
+This function helps create a list of picture names in a **.txt** file from a directory of pictures.
+
+```{r rDeepS_PictoBIIGLE,eval=TRUE,warning=FALSE,message=FALSE}
+library(Rdeepsledge)
+
+ mydir <- "path/to/your/image/directory"
+ 
+ DeepS_PictoBIIGLE(mydir)
 
 ```
 
