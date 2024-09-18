@@ -2,16 +2,25 @@
 % Please edit documentation in R/DeepS_darckzone.R
 \name{DeepS_darckzone}
 \alias{DeepS_darckzone}
-\title{This function creat grid count number of pixel in dark zones"}
+\title{Find Dark Zones in Images}
 \usage{
 DeepS_darckzone(mydir, sensibility, plot)
 }
 \arguments{
-\item{RESULT}{Is the number of not avalaible pixel is produced by DeepS_darckzone()"}
+\item{mydir}{Directory containing the images to be processed.}
+
+\item{sensibility}{A numeric value between 1 and 100. This parameter controls the sensitivity of dark zone detection and should be tested on an image for optimal results.}
+
+\item{plot}{A logical value. If \code{TRUE}, plots of the results are generated.}
 }
 \value{
-GRID dir is create in picture directory with picture and summary
+A dataset produced by the \code{DeepS_darkzone()} function, which indicates the number of unavailable pixels. Additionally, a directory named \code{DARKZONE} is created, containing the processed images.
 }
 \description{
-This function creat grid count number of pixel in dark zones"
+This function creates a mask for dark zones in images. It is initially used to remove dark pixels from the surface of the images to obtain accurate species densities.
+}
+\examples{
+mydir <- choose.dir(caption = "Select folder")
+sensibility <- 10
+find_dark_zones(mydir, sensibility, plot = TRUE)
 }

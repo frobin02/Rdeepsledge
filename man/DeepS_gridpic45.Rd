@@ -2,16 +2,20 @@
 % Please edit documentation in R/DeepS_gridpic45.R
 \name{DeepS_gridpic45}
 \alias{DeepS_gridpic45}
-\title{This function creat grid on new picture to help to subsample picture"}
+\title{Create a 45-Knot Grid on Images}
 \usage{
 DeepS_gridpic45(mydir)
 }
 \arguments{
-\item{RESULT}{Is the new pircture is produced by DeepS_gridpic45()"}
+\item{mydir}{A character string specifying the directory where the images are stored.}
 }
 \value{
-GRID dir is create in picture directory
+A new subdirectory named \code{GRID} is created within the specified directory. Each image is processed and saved in this \code{GRID} directory with the grid overlay.
 }
 \description{
-This function creat grid on new picture to help to subsample picture"
+The \code{DeepS_gridpic45()} function overlays a grid with 45 knots on each image in the specified directory. This function is useful for creating grids to characterize substrates in the images.
+}
+\examples{
+mydir <- "path/to/your/image/directory"
+DeepS_gridpic45(mydir)
 }

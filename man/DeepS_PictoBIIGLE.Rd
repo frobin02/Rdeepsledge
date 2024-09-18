@@ -2,16 +2,20 @@
 % Please edit documentation in R/DeepS_PictoBIIGLE.R
 \name{DeepS_PictoBIIGLE}
 \alias{DeepS_PictoBIIGLE}
-\title{This function creat txt file with all picture names of the directory"}
+\title{Merge Picture Names into a Text File for BIIGLE Input}
 \usage{
 DeepS_PictoBIIGLE(mydir)
 }
 \arguments{
-\item{RESULT}{Is the txt file produced by DeepS_PictoBIIGLE()"}
+\item{mydir}{A character string specifying the directory where the pictures are stored.}
 }
 \value{
-list.filetoBIIGLE.txt is produce in directory
+A text file named \code{list.filetoBIIGLE.txt} is created in the specified directory. This file contains the names of all the pictures.
 }
 \description{
-This function creat txt file with all picture names of the directory"
+This function generates a text file containing the names of all pictures in the specified directory. This text file can be used as an input list for BIIGLE.
+}
+\examples{
+mydir <- "path/to/your/image/directory"
+DeepS_PictoBIIGLE(mydir)
 }

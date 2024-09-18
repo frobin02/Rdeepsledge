@@ -1,10 +1,9 @@
-#PACKAGE "Rdeepsledge"
-
 #' Create a 45-Knot Grid on Images
 #'
-#' The `DeepS_gridpic45()` function creates a grid with 45 knots on an image. It was originally used to create grids for characterizing substrates.
-#' @param mydir is the picture directory
-#' @return GRID directory is create in picture directory.picture are clowned in GRID directory
+#' The `DeepS_gridpic45()` function overlays a grid with 45 knots on each image in the specified directory. This function is useful for creating grids to characterize substrates in the images.
+#' 
+#' @param mydir A character string specifying the directory where the images are stored.
+#' @return A new subdirectory named `GRID` is created within the specified directory. Each image is processed and saved in this `GRID` directory with the grid overlay.
 #' @export
 #' 
 #' @examples

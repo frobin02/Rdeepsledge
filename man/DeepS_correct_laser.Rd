@@ -2,16 +2,20 @@
 % Please edit documentation in R/DeepS_correct_laser.R
 \name{DeepS_correct_laser}
 \alias{DeepS_correct_laser}
-\title{This function detects double green lasers on a towed benthic sledge"}
+\title{Laser Detection Correction Function}
 \usage{
 DeepS_correct_laser(RESULT)
 }
 \arguments{
-\item{RESULT}{Is the dataset type produced by DeepS_find_laser ()"}
+\item{RESULT}{A dataset produced by the \code{DeepS_find_laser()} function.}
 }
 \value{
-file  is a backup in the user's document
+A backup file is created in the user's \code{Documents} directory.
 }
 \description{
-This function detects double green lasers on a towed benthic sledge"
+This function performs corrections on the dataset produced by \code{DeepS_find_laser()} for double green lasers on a towed benthic sledge.
+}
+\examples{
+result_data <- DeepS_find_laser(MP4_file)
+corrected_data <- correct_laser_detection(result_data)
 }
