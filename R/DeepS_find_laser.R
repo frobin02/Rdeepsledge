@@ -1,15 +1,19 @@
 #PACKAGE "Rdeepsledge"
 
 
-#"Fonction de detection laser"
-
-
-#' This function detects double green lasers on a towed benthic sledge
-#'@param MP4_file is the video file assigned MP4_file <- file.choose() for example
-#'@param para is a parallelization option to optimize the computing time FALSE for this version
-#'@param freq is the frame frequency used. A shorter number increases the computing time.
-#'@return a result is saved also in user/documents directory as laser_position_$yourvideonames$.txt at each iteration.
-#'@export
+#' Laser Detection Function
+#'
+#' This function detects double green lasers on a towed benthic sledge from a video file.
+#'
+#' @param MP4_file The video file to analyze, e.g., assigned with `MP4_file <- file.choose()`.
+#' @param para A boolean indicating whether parallelization is used to optimize computing time. Default is `FALSE`.
+#' @param freq The frame frequency used for processing. A shorter frequency increases the computation time.
+#' @return Results are saved in the user's `Documents` directory as `laser_position_$yourvideoname$.txt` for each iteration.
+#' @export
+#'
+#' @examples
+#' MP4_file <- file.choose()
+#' detect_lasers(MP4_file, para = FALSE, freq = 30)
 
 DeepS_find_laser <- function(MP4_file,para,freq) {
   freq<-as.numeric(freq)

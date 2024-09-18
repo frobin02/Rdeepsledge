@@ -1,16 +1,19 @@
 #PACKAGE "Rdeepsledge"
+#' Find Dark Zones in Images
+#'
+#' This function creates a mask for dark zones in images. It is initially used to remove dark pixels from the surface of the images to obtain accurate species densities.
+#'
+#' @param mydir Directory containing the images to be processed.
+#' @param sensibility A numeric value between 1 and 100. This parameter controls the sensitivity of dark zone detection and should be tested on an image for optimal results.
+#' @param plot A logical value. If `TRUE`, plots of the results are generated.
+#' @return A dataset produced by the `DeepS_darkzone()` function, which indicates the number of unavailable pixels. Additionally, a directory named `DARKZONE` is created, containing the processed images.
+#' @export
+#'
+#' @examples
+#' mydir <- choose.dir(caption = "Select folder")
+#' sensibility <- 10
+#' find_dark_zones(mydir, sensibility, plot = TRUE)
 
-
-#"find dark zone in picture"
-#' This function creat grid count number of pixel in dark zones"
-#'@param RESULT Is the number of not avalaible pixel is produced by DeepS_darckzone()"
-#'@return   GRID dir is create in picture directory with picture and summary
-#'@export
-
-
-#mydir <- choose.dir( caption = "Select folder")
-
-#sensibility <-10 
 
 DeepS_darckzone <- function(mydir,sensibility,plot){
   library(imager)

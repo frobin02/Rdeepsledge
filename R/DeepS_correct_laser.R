@@ -1,12 +1,14 @@
-#PACKAGE "Rdeepsledge"
-
-
-#"Correction function of laser detection"
-#' This function detects double green lasers on a towed benthic sledge"
-#'@param RESULT Is the dataset type produced by DeepS_find_laser ()"
-#'@return   file  is a backup in the user's document
-#'@export
-
+#' Laser Detection Correction Function
+#'
+#' This function performs corrections on the dataset produced by `DeepS_find_laser()` for double green lasers on a towed benthic sledge.
+#'
+#' @param RESULT A dataset produced by the `DeepS_find_laser()` function.
+#' @return A backup file is created in the user's `Documents` directory.
+#' @export
+#'
+#' @examples
+#' result_data <- DeepS_find_laser(MP4_file)
+#' corrected_data <- correct_laser_detection(result_data)
 
 DeepS_correct_laser<-function(RESULT){
   library(ggplot2)

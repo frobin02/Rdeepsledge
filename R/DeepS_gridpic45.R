@@ -1,14 +1,16 @@
 #PACKAGE "Rdeepsledge"
 
+#' Create a 45-Knot Grid on Images
+#'
+#' The `DeepS_gridpic45()` function creates a grid with 45 knots on an image. It was originally used to create grids for characterizing substrates.
+#' @param mydir is the picture directory
+#' @return GRID directory is create in picture directory.picture are clowned in GRID directory
+#' @export
+#' 
+#' @examples
+#' mydir <- "path/to/your/image/directory"
+#' DeepS_gridpic45(mydir)
 
-#"Creat grid with 45 noeud on picture"
-#' This function creat grid on new picture to help to subsample picture"
-#'@param RESULT Is the new pircture is produced by DeepS_gridpic45()"
-#'@return   GRID dir is create in picture directory
-#'@export
-
-
-# mydir<-choose.dir()
 
 DeepS_gridpic45<-function(mydir){
   

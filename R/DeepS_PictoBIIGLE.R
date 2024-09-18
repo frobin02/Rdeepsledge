@@ -1,18 +1,25 @@
 #PACKAGE "Rdeepsledge"
+#' Merge Picture Names into a Text File for BIIGLE Input
+#'
+#' This function creates a text file containing the names of all the pictures in the specified directory. The text file is intended for use as an input list in BIIGLE.
+#'
+#' @param mydir A directory where the pictures are stored.
+#' @return A text file named `list.filetoBIIGLE.txt` is created in the specified directory. This file contains the names of all the pictures.
+#' @export 
+#' 
+#' @examples
+#' mydir <- "path/to/your/image/directory"
+#' rDeepS_PictoBIIGLE(mydir)
 
 
-#"merge picture names in vector txt to imput pictures list in BIIGLE"
-#' This function creat txt file with all picture names of the directory"
-#'@param RESULT Is the txt file produced by DeepS_PictoBIIGLE()"
-#'@return   list.filetoBIIGLE.txt is produce in directory
-#'@export
+
 
 ############################## creation du fichier d'import pour biigle 
 
 # mydir <- choose.dir( caption = "Select folder")
 
 
-DeepS_PictoBIIGLE <- function(mydir) {
+rDeepS_PictoBIIGLE <- function(mydir) {
   library(reshape2)
   
   if (!is.null(input)) {
